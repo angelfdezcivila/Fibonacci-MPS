@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FibonacciTest {
-    private Fibonacci fibonacci;
+    private Fibonacci fibonacci = new Fibonacci();
 
     @Test
     public void computeOfZeroReturnZero() {
@@ -14,8 +14,8 @@ class FibonacciTest {
 
     @Test
     public void computeOfOneReturnOne() {
-        int obtainedValue = fibonacci.compute(0);
-        int expectedValue = 0;
+        int obtainedValue = fibonacci.compute(1);
+        int expectedValue = 1;
         assertEquals(expectedValue, obtainedValue);
     }
 
