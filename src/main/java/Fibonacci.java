@@ -3,8 +3,6 @@ public class Fibonacci {
 
          if(numero < 0){
             throw new RuntimeException("Fibonacci no admite valores negativos");
-         }else if(numero > 45){
-             throw new RuntimeException("Fibonacci no admite valores mayores de 45");
          }else if (numero < 2){
              return numero;
          }
