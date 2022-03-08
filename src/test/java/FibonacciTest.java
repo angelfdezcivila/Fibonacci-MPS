@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
 
@@ -17,11 +19,12 @@ class FibonacciTest {
         fibonacci = null;
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -2, -10, Integer.MIN_VALUE})
     @Order(1)
     @DisplayName("Prueba que al pasarle una posición negativa a la secuencia de Fibonacci lanze un error")
-    public void computeOfANegativeNumberThrowAnException() {
-        assertThrows(RuntimeException.class, () -> fibonacci.compute(-1));
+    public void computeOfANegativeNumberThrowAnException(int n) {
+        assertThrows(RuntimeException.class, () -> fibonacci.compute(n));
     }
 
     @Test
@@ -46,7 +49,7 @@ class FibonacciTest {
     @Test
     public void ComputeOfANumberBiggerThanOneMillisThrowAnException() {
         //assertThrows(RuntimeException.class, () -> fibonacci.compute(n));
-        assertTimeout(Duration.ofMillis(1), () -> fibonacci.compute(99999));
+        assertTimeout(Duration.ofMillis(1), () -> fibonacci.compute(9999));
     }
 
     @Test
